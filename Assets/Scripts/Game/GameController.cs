@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Balance;
 using Business;
 using Configs;
@@ -21,6 +22,7 @@ namespace Game
 
         private void Awake()
         {
+            Application.targetFrameRate = 60;
             Load();
             Initialize();
         }
@@ -92,10 +94,16 @@ namespace Game
                 businessController.onRevenue -= _balanceController.OnRevenue;
             }
         }
-
+        
         private void OnApplicationQuit()
         {
             _loader.Save(_model);
+        }
+
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            if(pauseStatus)
+                _loader.Save(_model);
         }
     }
 }

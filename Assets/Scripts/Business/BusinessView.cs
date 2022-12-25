@@ -19,7 +19,7 @@ namespace Business
         {
             _name.text = businessModelName;
             _lvl.text = lvl.ToString();
-            _revenue.text = revenue.ToString();
+            _revenue.text = revenue.ToString()+'$';
             _lvlUpCost.text = "LVL UP\nЦена: " + lvlUpCost + '$';
         }
 

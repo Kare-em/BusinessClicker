@@ -18,7 +18,15 @@ namespace Balance
 
         public bool TrySpendMoney(float money)
         {
-            return _balanceModel.UpdateBalance(-money);
+            if (_balanceModel.UpdateBalance(-money))
+            {
+                _balanceView.UpdateBalance(_balanceModel.Balance);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void OnRevenue(float money)
